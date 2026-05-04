@@ -1,8 +1,14 @@
-CREATE DATABASE NpsDb;
+-- Crear BD solo si no existe (evita error al repetir el script en local).
+IF DB_ID(N'NpsDb') IS NULL
+BEGIN
+    CREATE DATABASE NpsDb;
+END
 GO
 
 USE NpsDb;
 GO
+
+-- Tablas: pensado para primera instalación. Si ya existían, DROP manual o nueva BD antes de repetir estos CREATE.
 
 CREATE TABLE Roles (
     Id INT PRIMARY KEY,

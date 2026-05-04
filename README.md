@@ -25,13 +25,19 @@ No uso Entity Framework de propósito: el enunciado pide Dapper y consultas expl
 
 ## Base de datos
 
-1. Ejecutar en orden `Scripts/InitialSchema.sql` y `Scripts/SeedData.sql`.
+**Antes que `dotnet run`:** tiene que existir la base con tablas y datos de prueba. Orden típico:
+
+1. Ejecutá **primero** `Scripts/InitialSchema.sql`, **después** `Scripts/SeedData.sql` (en SSMS/Azure Data Studio o `sqlcmd`, contra tu instancia de SQL Server).
 2. Usuarios demo: `admin` y `voter01`; las contraseñas están solo en comentarios del seed (no las dejo como documento “vivo” fuera del script).
-3. Apuntar la cadena a tu instancia. La cadena con nombre de equipo no va al remoto: partí de `src/Api/appsettings.Example.json` o usá [`dotnet user-secrets`](https://learn.microsoft.com/aspnet/core/security/app-secrets) para `ConnectionStrings:DefaultConnection`.
+3. Apuntá la cadena en la API a esa misma base: partí de `src/Api/appsettings.Example.json`, copiá a algo local ignorado por git o usá [`dotnet user-secrets`](https://learn.microsoft.com/aspnet/core/security/app-secrets) para `ConnectionStrings:DefaultConnection`.
+
+Si saltás estos pasos, la API levanta pero fallará al pegarle a usuarios/tablas que no existen.
 
 ---
 
 ## Arrancar la API
+
+(Solo después de tener **BD aplicada + `DefaultConnection`** configurada.)
 
 ```bash
 cd src/Api

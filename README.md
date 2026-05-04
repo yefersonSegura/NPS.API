@@ -2,7 +2,7 @@
 
 Soy **Yeferson Segura**, desarrollador de software en **móvil y web**. Mi portfolio profesional y formas de contacto están en **[yefersonsegura.com](https://yefersonsegura.com/)**. Este repo concentra la **API del ejercicio DEV-001**.
 
-El back-end (.NET 10) incluye JWT con refresh, un voto por usuario y resultados NPS para admin. El cliente **Omega** (Angular 20) lo desarrollé en otro checkout (`npsApp`). **Omega** también da nombre a la **arquitectura / plantilla** que uso en **Flutter** (repos aparte). La siguiente guía enlaza esta API con la SPA sin asumir nada invisible.
+El **back-end** (.NET 10) incluye JWT con refresh, un voto por usuario y resultados NPS para admin. El **SPA (Omega, Angular)** y cualquier texto de front viven **en su propio repo** (`npsApp` / NPS.FRONT); este árbol es **solo API, scripts SQL y tests**.
 
 ---
 
@@ -11,10 +11,7 @@ El back-end (.NET 10) incluye JWT con refresh, un voto por usuario y resultados
 | Qué | Dónde |
 |-----|--------|
 | API + scripts SQL + tests | Este repo (`Nps.Api.slnx`) |
-| SPA Omega ([Yeferson Segura](https://yefersonsegura.com/)) | Ruta habitual en mi máquina: `C:\Proyectos_Yeferson\Angular\npsApp` (otro checkout = ajustar solo paths) |
-
-**Más de mi lado (contexto, no vive en este git)**  
-Implementé **Omega Architecture para Flutter** como enfoque de estructura de proyecto y flujos Dart. Además trabajo en **[AbeyJS](https://abeyjs-fm.github.io/AbeyJS/)** (documentación oficial), framework todavía **en fase experimental** (interfaces y compatibilidad pueden cambiar hasta que lo estabilice).
+| SPA Omega Angular | Repo del front (`npsApp`); rutina local típ.: `C:\Proyectos_Yeferson\Angular\npsApp` |
 
 **Capas (.NET)**  
 `Domain` → entidades limpias. `Application` → casos de uso (MediatR), validación (FluentValidation), contratos, AutoMapper donde aporta (`NpsResultsProfile` → `NpsResultsDto`). `Infrastructure` → Dapper contra SQL Server, emisión JWT y hashing. `Api` → controladores finos, pipeline, OpenAPI/Swagger en desarrollo.

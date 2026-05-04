@@ -2,7 +2,7 @@
 
 Soy **Yeferson Segura**, desarrollador de software en **móvil y web**. Mi portfolio profesional y formas de contacto están en **[yefersonsegura.com](https://yefersonsegura.com/)**. Este repo concentra la **API del ejercicio DEV-001**.
 
-El **back-end** (.NET 10) incluye JWT con refresh, un voto por usuario y resultados NPS para admin. El **SPA (Omega, Angular)** y cualquier texto de front viven **en su propio repo** (`npsApp` / NPS.FRONT); este árbol es **solo API, scripts SQL y tests**.
+El **back-end** (.NET 10) incluye JWT con refresh, un voto por usuario y resultados NPS para admin. El **SPA (Omega, Angular)** vive **en otro repo:** **[github.com/yefersonSegura/NPS.FRONT](https://github.com/yefersonSegura/NPS.FRONT)** (nombre local habitual del checkout: `npsApp`). Este árbol es **solo API, scripts SQL y tests**.
 
 ---
 
@@ -11,7 +11,7 @@ El **back-end** (.NET 10) incluye JWT con refresh, un voto por usuario y result
 | Qué | Dónde |
 |-----|--------|
 | API + scripts SQL + tests | Este repo (`Nps.Api.slnx`) |
-| SPA Omega Angular | Repo del front (`npsApp`); rutina local típ.: `C:\Proyectos_Yeferson\Angular\npsApp` |
+| SPA Omega Angular | **[NPS.FRONT](https://github.com/yefersonSegura/NPS.FRONT)** · checkout local típ.: `C:\Proyectos_Yeferson\Angular\npsApp` |
 
 **Capas (.NET)**  
 `Domain` → entidades limpias. `Application` → casos de uso (MediatR), validación (FluentValidation), contratos, AutoMapper donde aporta (`NpsResultsProfile` → `NpsResultsDto`). `Infrastructure` → Dapper contra SQL Server, emisión JWT y hashing. `Api` → controladores finos, pipeline, OpenAPI/Swagger en desarrollo.
@@ -53,7 +53,7 @@ OpenAPI genera `/openapi/v1.json`; en desarrollo Swagger UI lo monta desde `Prog
 
 ## Cliente Omega (Angular)
 
-La guía del **front** (contrato HTTP, rutas SPA, `apiUrl`, carpetas del código y build) está en el **README del proyecto Angular** (`npsApp`), no en este repo — para no duplicar y mantener una sola fuente de verdad del SPA.
+La guía del **front** (contrato HTTP, rutas SPA, `apiUrl`, carpetas y build) está en el **[README del repo NPS.FRONT](https://github.com/yefersonSegura/NPS.FRONT)**, no acá — una sola fuente de verdad del SPA.
 
 ---
 

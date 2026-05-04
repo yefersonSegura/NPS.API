@@ -50,37 +50,7 @@ OpenAPI genera `/openapi/v1.json`; en desarrollo Swagger UI lo monta desde `Prog
 
 ## Cliente Omega (Angular)
 
-**Omega** aquí es el Angular 20 del DEV-001, hecho por mí. La misma línea **Omega** la llevo a **Flutter** como arquitectura; **[AbeyJS](https://abeyjs-fm.github.io/AbeyJS/)** sigue en paralelo (documentación en ese sitio).
-
-Instalación y `ng serve` en el directorio de `npsApp`. Para que cargue datos, antes tiene que existir esta API.
-
-`environment.development.ts`: `apiUrl` es solo el origen (`https://localhost:7070` o `http://localhost:5140`), **sin** sufijo `/api`. Las rutas relativas están centralizadas en `src/app/core/api/api-paths.ts`.
-
-### HTTP que realmente llamamos
-
-| Acción | Método | Ruta (tras `apiUrl`) | Body | Authorization |
-|--------|--------|----------------------|------|----------------|
-| Login | POST | `api/Auth/Login` | `username`, `password` | Ninguna |
-| Refresh | POST | `api/Auth/refresh` | `token`, `refreshToken` | Ninguna |
-| Voto | POST | `api/Survey/vote` | `score` (0–10) | Bearer; rol `2` (votante) |
-| NPS | GET | `api/Admin/results` | — | Bearer; rol `1` (admin) |
-
-ASP.NET resuelve rutas sin pelearse por mayúsculas; en el front dejé los paths alineados con los nombres de controlador.
-
-**Roles**: en BD y en `Authorize(Roles = "1"|"2")` son strings. El Angular lee el claim de rol (incluida la URI larga de `ClaimTypes.Role` por si el token la trae así).
-
-**SPA**: `/login` público; `/home/dashboard` admin; `/home/vote` votante; `/home` redirige según rol. Interceptor: adjunta JWT y, ante 401, intenta refresh una vez con `HttpBackend` para no enredar con el propio interceptor.
-
----
-
-## Mapa rápido front (para orientarse en código)
-
-- `features/auth` — login y `AuthService` (idle + refresh programado).
-- `features/nps/vote` y `features/nps/results` — voto y dashboard.
-- `core/guards/auth.guards.ts` — `authGuard`, `adminGuard`, `voterGuard`.
-- `common/http/auth-interceptor.fn.ts` — Bearer + refresh.
-
-Build prod: `ng build --configuration production` → `dist/npsApp/`.
+La guía del **front** (contrato HTTP, rutas SPA, `apiUrl`, carpetas del código y build) está en el **README del proyecto Angular** (`npsApp`), no en este repo — para no duplicar y mantener una sola fuente de verdad del SPA.
 
 ---
 
